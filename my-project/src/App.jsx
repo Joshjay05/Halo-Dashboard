@@ -1,16 +1,44 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import "./App.css";
+// import "./App.css";
 import SharedLayout from "./Components/SharedLayout";
+// import { DarkModeProvider } from "./Components/ThemeContext";
 
-export default function App() {
+// import React from "react";
+
+const App = () => {
 	return (
-		<div>
+		// <DarkModeProvider>
+		<div className="w-full">
 			<BrowserRouter>
 				<Routes>
-					<Route path="/" element={<SharedLayout />} />
+					<Route path="/" element={<SharedLayout />}></Route>
 				</Routes>
 			</BrowserRouter>
-			;
+			{/* <SharedLayout /> */}
 		</div>
+		// {/* </DarkModeProvider> */}
 	);
-}
+};
+
+export default App;
+
+// import React, { useState } from "react";
+// import useLocalStorage from "use-local-storage";
+
+// import "./App.css";
+// import { Toggle } from "./components/Toggle";
+
+// export const App = () => {
+// 	const preference = window.matchMedia("(prefers-color-scheme: dark)").matches;
+// 	const [isDark, setIsDark] = useLocalStorage("isDark", preference);
+
+// 	return (
+// 		<div className="App" data-theme={isDark ? "dark" : "light"}>
+// 			<Toggle isChecked={isDark} handleChange={() => setIsDark(!isDark)} />
+// 			<h1 className="title">Hello world!</h1>
+// 			<div className="box">
+// 				<h2>This is a box</h2>
+// 			</div>
+// 		</div>
+// 	);
+// };
