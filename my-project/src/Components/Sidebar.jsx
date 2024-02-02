@@ -7,18 +7,26 @@ import { MdOutlineSpaceDashboard } from "react-icons/md";
 import { LuSettings2 } from "react-icons/lu";
 import { IoCalendarNumber } from "react-icons/io5";
 import { BiSolidReport } from "react-icons/bi";
-// import { Switch } from "../Components/Switch";
-// import Switch from "@mui/material/Switch";
+
 import styled from "styled-components";
 import avatar from "../image/avatar.jpg";
-import CustomizedSwitches from "./Switch";
+
+import ReactSwitch from "react-switch";
+import { Wrapper } from "./Theme";
+// import ReactW
 const Sidebar = () => {
+	const { themeMode, setThemeMode } = Wrapper();
+	const toggleTheme = () => {
+		setThemeMode((curr) => (curr === "dark" ? "light" : "dark"));
+		console.log("checked");
+	};
+
 	return (
 		<Aside>
 			<aside>
 				<header>
 					<FaHandBackFist style={{ color: "yellow", fontSize: "30px" }} />{" "}
-					<span style={{ color: "white", fontSize: "25px" }}> Wise</span>
+					<span className="logo"> Wise</span>
 				</header>
 
 				<article className="avatar">
@@ -31,13 +39,12 @@ const Sidebar = () => {
 							/>
 						</Stack>
 					</div>
-					<p>Louis Carter</p>
-					<span>Edit</span>
+					<p className="avatar-name">Louis Carter</p>
+					<span className="avatar-control">Edit</span>
 				</article>
 				<nav className="side-list">
 					<ul className="side-list">
 						<li>
-							{" "}
 							<MdOutlineSpaceDashboard />
 							Dashboard
 						</li>
@@ -56,13 +63,22 @@ const Sidebar = () => {
 					</ul>
 				</nav>
 				<section className="bottom">
-					{/* <Switch defaultChecked /> */}
-					<div style={{ display: "flex", justifyContent: "center" }}>
+					<div
+						style={{
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+						}}>
 						<span
 							style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-							<p>light </p>
-							<CustomizedSwitches />
-							<p>Dark</p>
+							<label>{themeMode === "dark" ? "Dark Mode" : "Light Mode"}</label>
+
+							<span>
+								<ReactSwitch
+									onChange={toggleTheme}
+									checked={themeMode === "dark"}
+								/>
+							</span>
 						</span>
 					</div>
 				</section>
@@ -79,6 +95,7 @@ const Aside = styled.aside`
 		// gap: 50px;
 		margin-top: 1.2rem;
 	}
+
 	header {
 		display: flex;
 		margin-block: 20px;
@@ -86,6 +103,7 @@ const Aside = styled.aside`
 		justify-content: center;
 		align-items: center;
 	}
+
 	.bottom {
 		margin-top: 5rem;
 	}
@@ -121,11 +139,18 @@ const Aside = styled.aside`
 		justify-contents: space-between;
 		gap: 20px;
 	}
-	.avatar p {
-		color: #fff;
-		font-size: 16px;
+	// #dark .avatar-name {
+	// 	color: #fff;
+	// 	font-size: 16px;
+	// }
+	#light .avatar span {
+		border-radius: 16px;
+		color: black;
+		border: 2px solid #333;
+		font-size: 12px;
+		padding: 5px 10px;
 	}
-	.avatar span {
+	#dark .avatar span {
 		border-radius: 16px;
 		color: white;
 		border: 2px solid #333;

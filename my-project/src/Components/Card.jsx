@@ -15,7 +15,7 @@ const Card = ({ title, rightText, img, icon, percentage, alt }) => {
 						<i></i> <p></p> <p></p>
 					</div>
 					<div>
-						<i></i> <p></p> <p></p>
+						<i>{percentage}</i> <p></p> <p></p>
 					</div>
 				</article>
 			</article>

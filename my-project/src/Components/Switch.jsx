@@ -3,8 +3,13 @@ import { styled } from "@mui/material/styles";
 import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
+import { Wrapper } from "./Theme";
+// import { useTheme } from "styled-components";
+// import { createContext } from "react";
 // import Stack from "@mui/material/Stack";
-// import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography"
+
+// import { Theme } from "./Theme";
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 	width: 62,
@@ -54,12 +59,23 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function CustomizedSwitches() {
+	const { themeMode, lightTheme, darkTheme } = Wrapper();
+	const onChangeBtn = (e) => {
+		const darkModeStatus = e.current.target.checked;
+		if (darkModeStatus === "dark") {
+			lightTheme();
+		} else {
+			darkTheme();
+		}
+	};
+	// const [themeMode, ToggleTheme]=useTheme(createContext)
 	return (
 		<FormGroup sx={{ m: 0 }}>
 			<FormControlLabel
 				sx={{ m: 0 }}
-				control={<MaterialUISwitch sx={{ m: 0 }} defaultChecked />}
-				// label="MUI switch"
+				control={<MaterialUISwitch sx={{ m: 0 }} />}
+				checked={themeMode === "dark"}
+				onChange={onChangeBtn}
 			/>
 		</FormGroup>
 	);

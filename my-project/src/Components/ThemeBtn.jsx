@@ -1,10 +1,14 @@
 // import React from 'react'
-import useTheme from "./Theme";
+import Theme from "./Theme";
 const ThemeBtn = () => {
-	const { themeMode, LightTheme, darkTheme } = useTheme();
+	// const toggleTheme = () => {
+	// 		setThemeMode((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+	// 	};
+
+	const { themeMode, LightTheme, darkTheme } = Theme();
 	const onChangeBtn = (e) => {
 		const darkModeStatus = e.current.target.checked;
-		if (themeMode === "dark") {
+		if (darkModeStatus === "dark") {
 			LightTheme();
 		} else {
 			darkTheme();
@@ -15,8 +19,9 @@ const ThemeBtn = () => {
 			<input
 				type="checkbox"
 				value=""
-				className="sr-only peer"
+				checked={themeMode === "dark"}
 				onChange={onChangeBtn}
+				className="sr-only peer"
 			/>
 		</label>
 	);

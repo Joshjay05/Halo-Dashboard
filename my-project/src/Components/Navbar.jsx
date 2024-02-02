@@ -8,7 +8,7 @@ import SearchBar from "./SearchBar";
 
 const Navbar = () => {
 	return (
-		<NavWrapper>
+		<NavWrapper className="w-full">
 			<p>Statistics</p>
 			<div>
 				<SearchBar />
@@ -39,6 +39,7 @@ const NavWrapper = styled.nav`
 	.icon {
 		color: white;
 		font-size: 20px;
+		// color:v
 	}
 	span {
 		border: 1px solid black;
