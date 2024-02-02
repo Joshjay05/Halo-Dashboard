@@ -1,25 +1,20 @@
 import PropTypes from "prop-types";
 import { useState, createContext, useContext } from "react";
-
+// import { useEffect } from "react";
 const ThemeContext = createContext(null);
 
 export const ThemeProvider = ({ children }) => {
 	const [themeMode, setThemeMode] = useState("dark");
 
-	// const lightTheme = () => {
-	// 	setThemeMode("light");
-	// };
-	// const darkTheme = () => {
-	// 	setThemeMode("dark");
-	// };
 	const toggleTheme = () => {
 		setThemeMode((curr) => (curr === "dark" ? "light" : "dark"));
 		console.log("checked");
 	};
+	// const lightmode=()
 
 	// useEffect(() => {
-	// 	document.querySelector("html").classList.remove("dark", "light");
-	// 	document.querySelector("html").classList.add(themeMode);
+	// 	document.querySelector("body").classList.remove("dark", "light");
+	// 	document.querySelector("body").classList.add(themeMode);
 	// }, [themeMode]);
 
 	return (

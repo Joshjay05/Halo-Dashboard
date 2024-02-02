@@ -44,7 +44,7 @@ const Sidebar = () => {
 				</article>
 				<nav className="side-list">
 					<ul className="side-list">
-						<li>
+						<li className="side-li">
 							<MdOutlineSpaceDashboard />
 							Dashboard
 						</li>

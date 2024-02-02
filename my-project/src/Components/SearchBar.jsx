@@ -8,6 +8,7 @@ import Toolbar from "@mui/material/Toolbar";
 import InputBase from "@mui/material/InputBase";
 // import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import { Wrapper } from "./Theme";
 
 const Search = styled("div")(({ theme }) => ({
 	position: "relative",
@@ -54,6 +55,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchBar() {
+	const { themeMode } = Wrapper();
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<Toolbar>
@@ -62,7 +64,14 @@ export default function SearchBar() {
 						<SearchIcon />
 					</SearchIconWrapper>
 					<StyledInputBase
-						sx={{ color: "white", border: "none", outline: "none" }}
+						sx={{
+							color: themeMode === "dark" ? "white" : "red",
+							border:
+								themeMode === "dark"
+									? "1px solid transparent"
+									: "1px solid black",
+							outline: "none",
+						}}
 						placeholder="Search…"
 						inputProps={{ "aria-label": "search" }}
 					/>

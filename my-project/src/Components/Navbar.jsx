@@ -1,22 +1,25 @@
-// import React from 'react'
-
-// import styled from "@emotion/styled";
 import Buttons from "./Button";
 import AddAlertIcon from "@mui/icons-material/AddAlert";
 import { styled } from "styled-components";
 import SearchBar from "./SearchBar";
+import { Wrapper } from "./Theme";
 
 const Navbar = () => {
+	const { themeMode } = Wrapper();
 	return (
-		<NavWrapper className="w-full">
-			<p>Statistics</p>
+		<NavWrapper>
+			<p className={themeMode === "dark" ? "p-dark" : "p-light"}>Statistics</p>
 			<div>
-				<SearchBar />
+				<SearchBar
+					style={{ background: themeMode === "dark" ? "red" : "blue" }}
+				/>
 			</div>
 			<div className="right-nav">
 				<Buttons />
 				<span>
-					<AddAlertIcon className="icon" />
+					<AddAlertIcon
+						className={themeMode === "dark" ? "dark-icon" : "light-icon"}
+					/>
 				</span>
 			</div>
 		</NavWrapper>
@@ -36,17 +39,25 @@ const NavWrapper = styled.nav`
 		align-items: center;
 		gap: 20px;
 	}
-	.icon {
+	.dark-icon {
 		color: white;
 		font-size: 20px;
 		// color:v
+	}
+	.light-icon {
+		color: black;
+		font-size: 20px;
 	}
 	span {
 		border: 1px solid black;
 		border-radius: 8px;
 		padding: 8px;
 	}
-	p {
+	.p-light {
+		color: black;
+		font-size: 25px;
+	}
+	.p-dark {
 		color: #fff;
 		font-size: 25px;
 	}
